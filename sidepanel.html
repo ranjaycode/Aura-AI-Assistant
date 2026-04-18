@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura AI - Gemini 2.0 Flash</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-container">
+        <div class="aura-logo"></div>
+        <h1>Aura AI</h1>
+      </div>
+      <div class="badge">Gemini 2.5 Flash</div>
+    </header>
+
+    <main id="app">
+      <div id="setup-view" class="view hidden">
+        <div class="card glass">
+          <h2>Welcome to Aura AI</h2>
+          <p>Bring the intelligence of Gemini 2.0 Flash to your browser. First, set up your API Key.</p>
+          <div class="input-group">
+            <input type="password" id="api-key-input" placeholder="Enter Gemini API Key">
+            <button id="save-key-btn" class="primary-btn">Initialize Aura</button>
+          </div>
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" class="link-hint">Get a free key here</a>
+        </div>
+      </div>
+
+      <div id="chat-view" class="view">
+        <div class="tab-control">
+          <button class="tab-btn active" data-tab="summary">Pulse</button>
+          <button class="tab-btn" data-tab="chat">Chat</button>
+        </div>
+
+        <div id="summary-panel" class="tab-panel active">
+          <div class="status-bar">
+            <span id="page-title">Detecting page...</span>
+          </div>
+          <button id="summarize-btn" class="action-btn">
+            <svg viewBox="0 0 24 24" fill="none" class="icon"><path d="M13 10V3L4 14H11V21L20 10H13Z" fill="currentColor"/></svg>
+            Generate Pulse Summary
+          </button>
+          <div id="summary-output" class="content-display empty">
+            <div class="placeholder">Click the button above to analyze this page using Flash 2.0</div>
+          </div>
+        </div>
+
+        <div id="chat-panel" class="tab-panel">
+          <div id="chat-history" class="chat-history">
+            <div class="message ai">
+              <div class="bubble">I'm Aura. Ask me anything about the current page!</div>
+            </div>
+          </div>
+          <div class="chat-input-container">
+            <textarea id="chat-input" placeholder="Ask Aura..." rows="1"></textarea>
+            <button id="send-btn" class="send-btn">
+              <svg viewBox="0 0 24 24" fill="none" class="icon"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" fill="currentColor"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="status-indicator">
+        <span id="api-status" class="dot"></span>
+        <span id="api-status-text">Gemini Ready</span>
+      </div>
+      <button id="settings-btn" class="icon-btn">⚙️</button>
+    </footer>
+  </div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
