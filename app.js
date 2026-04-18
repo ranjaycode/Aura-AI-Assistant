@@ -18,12 +18,19 @@ const settingsBtn = document.getElementById('settings-btn');
 const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
 
-let API_KEY = "AIzaSyAAwZA8oxZ1hHHHW4pXfj9GUA0KMqhxLro";
+let API_KEY = "";
 
 // Initialize
 async function init() {
+  const data = await chrome.storage.local.get(['gemini_api_key']);
+  if (data.gemini_api_key) {
+    API_KEY = data.gemini_api_key;
     showView('chat');
-    updateStatus(true, "Gemini 1.5 Flash Ready");
+    updateStatus(true, "Gemini 2.5 Flash Ready");
+  } else {
+    showView('setup');
+    updateStatus(false, "API Key Required");
+  }
   
   // Detect active tab info
   updatePageInfo();
